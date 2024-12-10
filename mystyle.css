@@ -1,0 +1,51 @@
+h1 {
+    background-color: rgb(0, 0, 0);
+    font-size: 16pt;
+    color: green;
+
+}
+
+h1.myhl {
+    font-size: 25pt;
+    margin: 25px auto;
+    padding: 10px 50px 20px 50px;
+    border: 5px solid red;
+    border-radius: 50%;
+    width: 500px;
+    height: 100px;
+    line-height: 120px;
+    text-align: center;
+    display: block;
+    background-color: #f9f9f9;
+    color: red;
+    opacity: 300px;
+
+}
+
+h1.myhl:hover {
+    background-color: red;
+    color: white;
+}
+
+form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    
+}
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+input[type="reset"] {
+    background-color: #f44336;
+    color: white;
+    border-color: #f44336;
+}
+body {
+    font-family: 'Kanit';
+}
