@@ -1,0 +1,56 @@
+h1 {
+    background-color: rgb(253, 251, 251);
+    font-size: 16pt;
+    color: green;
+
+}
+
+h1.myhl {
+    font-size: 25pt;
+    margin: 25px auto;
+    padding: 10px 50px;
+    border: 5px solid red;
+    border-radius: 50%;
+    width: 1000px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    background-color: #a4e2a6;
+    color: red;
+}
+
+h1.myhl:hover {
+    background-color: red;
+    color: #a4e2a6;
+}
+
+form {
+    max-width: 1700px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    
+}
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+input[type="reset"] {
+    background-color: #f44336;
+    color: white;
+    border-color: #f44336;
+}
+style {
+    background-color: #a4e2a6;
+    font-family: 'Kanit';
+}
+body {
+   font-family: 'Kanit';
+   background-color: #a4e2a6;
+}
