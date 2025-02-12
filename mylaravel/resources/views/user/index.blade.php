@@ -26,13 +26,14 @@
                     <a href="{{ url('/user/'.$user->id)}}">
                         <button class="btn btn-warning">Edit</button>
                     </a>
-                    <form action="{{ url('/user') }}" method="post" style="display: inline;">
+                    <form action="{{ url('/user') }}" method="post" id="delete-form-{{ $user->id }}" style="display: inline;">
                         @csrf
                         @method('delete')
-                        <input type="hidden" name="id" value="{{ $user->id }}" >
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <input type="hidden" name="id" value="{{ $user->id }}">
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $user->id }})">Delete</button>
                     </form>
                 </td>
+
               </tr>
               <?php } ?>
             </tbody>
@@ -55,4 +56,35 @@
 @endsection
 
 @section('scripts')
-
+<script>
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    function confirmDelete(userId) {
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user confirms, submit the form to delete the user
+                document.getElementById('delete-form-' + userId).submit();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelled",
+                    text: "The user is safe",
+                    icon: "error"
+                });
+            }
+        });
+    }
+</script>
+@endsection
