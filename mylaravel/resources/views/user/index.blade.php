@@ -26,6 +26,17 @@
                     <a href="{{ url('/user/'.$user->id)}}">
                         <button class="btn btn-warning">Edit</button>
                     </a>
+                    <form action="{{ url('/user') }}" method="post" style="display: inline;">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="id" value="{{ $user->id }}" >
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <a href="{{ url('/user/'.$user->id)}}">
+                        <button class="btn btn-warning">Edit</button>
+                    </a>
                     <form action="{{ url('/user') }}" method="post" id="delete-form-{{ $user->id }}" style="display: inline;">
                         @csrf
                         @method('delete')
@@ -33,7 +44,6 @@
                         <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $user->id }})">Delete</button>
                     </form>
                 </td>
-
               </tr>
               <?php } ?>
             </tbody>

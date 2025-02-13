@@ -119,39 +119,3 @@
 @endsection
 
 
-@section('scripts')
-<script>
-    function confirmDelete(userId) {
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-    });
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-        if (result.isConfirmed) {
-            // If the user confirms, submit the form to delete the user
-            document.getElementById('delete-form-' + userId).submit();
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            swalWithBootstrapButtons.fire({
-                title: "Cancelled",
-                text: "The user is safe 🙂",
-                icon: "error",
-                customClass: {
-                    icon: 'text-danger'
-                }
-            });
-        }
-    });
-}
-</script>
-@endsection
