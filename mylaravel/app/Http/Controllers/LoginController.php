@@ -8,22 +8,23 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-
-    function index(){
-    return view('login');
+    //
+    function index()
+    {
+        return view('login');
     }
-    function login (Request $req) {
-        //print_r ($req->input());
-        $user = User:: where ('email', $req->email)->first();
-        //print_r ($user);
-        if ($user !=null && Hash::check($req->password ,$user ->password)) {
+    function login(Request $req)
+    {
+        //print_r($req->input());
+        $user = User::where('email', $req->email)->first();
+        //print_r($user);
+        if ($user != null && Hash::check($req->password, $user->password)) {
             $req->session()->put('user', $user);
-            return \redirect('users');
-        }else {
-            $req->session() ->flash('error', 'กรุณาตรวจสอบข้อมูลอีกครั้ง');
-            return redirect ('/login');
+
+            return redirect('/users');
+        } else {
+            $req->session()->flush('error', 'กรุณาตรวจสอบควาสมถูกต้อง');
+            return redirect('/login');
         }
     }
-
 }
-

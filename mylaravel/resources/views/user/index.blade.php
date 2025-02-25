@@ -1,6 +1,9 @@
-@extends('layout.default_with_menu')
+@extends('layouts.default_with_menu')
 
 @section('content')
+@if(session('user'))
+    <h1>{{ session('user')->name }}</h1>
+@endif
 <div class="row">
     <div class="col-md-12">
       <div class="card mb-12">
@@ -26,21 +29,12 @@
                     <a href="{{ url('/user/'.$user->id)}}">
                         <button class="btn btn-warning">Edit</button>
                     </a>
-                    <form action="{{ url('/user') }}" method="post" style="display: inline;">
+                    {{-- <form action="{{ url('/user') }}" method="post" style="display: inline;"> --}}
+                    <form id="delete-form-{{ $user->id }}" action="{{ url('/user') }}" method="post" style="display: inline;">
                         @csrf
                         @method('delete')
                         <input type="hidden" name="id" value="{{ $user->id }}" >
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-                <td>
-                    <a href="{{ url('/user/'.$user->id)}}">
-                        <button class="btn btn-warning">Edit</button>
-                    </a>
-                    <form action="{{ url('/user') }}" method="post" id="delete-form-{{ $user->id }}" style="display: inline;">
-                        @csrf
-                        @method('delete')
-                        <input type="hidden" name="id" value="{{ $user->id }}">
+                        {{-- <button type="submit" class="btn btn-danger">Delete</button> --}}
                         <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $user->id }})">Delete</button>
                     </form>
                 </td>
@@ -61,6 +55,7 @@
         </div>
       </div>
       <!-- /.card -->
+      {{-- <button class="btn" onclick="confirm_delete()">Click me</button> --}}
     </div>
 </div>
 @endsection
@@ -98,3 +93,23 @@
     }
 </script>
 @endsection
+{{--@section('scripts')
+<script>
+    function confirm_delete(){
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+            }).then(function(result) {
+                console.log("Result",result)
+                if (result.isconfirmed) {
+                    console.log("Delete It!", result)
+                }
+            });
+        }
+</script>
+@endsection--}}

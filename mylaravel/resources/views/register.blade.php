@@ -1,4 +1,4 @@
-@extends('layout.default')
+@extends('layouts.default')
 
 @section('content')
 <div class="register-box">
@@ -66,7 +66,7 @@
   </div>
 @endsection
 
-  @section('scripts')
+@section('scripts')
     <script>
       function myfunction() {
     // ดึงค่าจากฟอร์ม
@@ -118,4 +118,41 @@
     </script>
 @endsection
 
+{{-- @section('scripts')
+    <script>
+        let $myvalue
+        var myvalue2 = "value of myvalue2"
+        const $myvalue3 = ""
 
+        console.log("Hello World!")
+
+        //alert("Hello World!")
+        /**/
+        //
+        //ALERT("Hello World!")
+        function myfunction(){
+            let name = document.getElementById('name')
+            name = $('#name')
+            let email = document.getElementById('email')
+            let password = document.getElementById('pass')
+            let mycheckbox = document.getElementById('mycheckbox')
+            // name.value = "My Name Value"
+            // name.val("My Name Value")
+            console.log(name.val(), email.value, password.value, mycheckbox.checked)
+            if(name.val() == "My Name Value"){
+                name.addClass('is-invalid');
+                $('#invalid-name').html("<b><u>ใส่ name เป็นค่านี้ไม่ได้</u></b>")
+                return false;
+            } else{
+                name.removeClass('is-invalid')
+            }
+
+            return true;
+        }
+
+        // myfunction()
+    </script>
+    <script>
+        console.log(myvalue2)
+    </script>
+@endsection --}}
